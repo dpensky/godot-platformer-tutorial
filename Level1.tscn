@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/world_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://pass_trough_tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://assets/background/set2_background.png" type="Texture" id=4]
+[ext_resource path="res://assets/background/set2_tiles.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 160, 32 )
@@ -35,7 +37,7 @@ format = 1
 tile_data = PoolIntArray( -393221, 0, 0, -393220, 0, 0, -393219, 0, 0, -393218, 0, 0, -393217, 0, 0, -458752, 0, 0, -458751, 0, 0, -458750, 0, 0, -458749, 0, 0, -458748, 0, 0, -458747, 0, 0, -458746, 0, 0, -458745, 0, 0, -458744, 0, 0, -458743, 0, 0, -458742, 0, 0, -458741, 0, 0, -458740, 0, 0, -458739, 0, 0, -458738, 0, 0, -458737, 0, 0, -458736, 0, 0, -458735, 0, 0, -458734, 0, 0, -458733, 0, 0, -458732, 0, 0, -458731, 0, 0, -458730, 0, 0, -458729, 0, 0, -458728, 0, 0, -458727, 0, 0, -458726, 0, 0, -458725, 0, 0, -458724, 0, 0, -458723, 0, 0, -458722, 0, 0, -458721, 0, 0, -327685, 0, 0, -393185, 0, 0, -262149, 0, 0, -327649, 0, 0, -196613, 0, 0, -262113, 0, 0, -131077, 0, 0, -196597, 5, 0, -196596, 6, 0, -196577, 0, 0, -65541, 0, 0, -131041, 0, 0, -5, 0, 0, -65529, 5, 0, -65528, 6, 0, -65523, 5, 0, -65522, 6, 0, -65519, 5, 0, -65518, 6, 0, -65505, 0, 0, 65531, 0, 0, 31, 0, 0, 131067, 0, 0, 65556, 5, 0, 65557, 6, 0, 65567, 0, 0, 196603, 0, 0, 131087, 5, 0, 131088, 6, 0, 131103, 0, 0, 262139, 0, 0, 196632, 5, 0, 196633, 6, 0, 196639, 0, 0, 327675, 0, 0, 262175, 0, 0, 393211, 0, 0, 327691, 5, 0, 327692, 2, 0, 327693, 2, 0, 327694, 6, 0, 327708, 5, 0, 327709, 6, 0, 327711, 0, 0, 458747, 0, 0, 393247, 0, 0, 524283, 0, 0, 458770, 1, 0, 458771, 2, 0, 458772, 2, 0, 458773, 2, 0, 458774, 2, 0, 458775, 2, 0, 458776, 2, 0, 458777, 3, 0, 458783, 0, 0, 589819, 0, 0, 589820, 1, 0, 589821, 3, 0, 589823, 1, 0, 524288, 2, 0, 524289, 2, 0, 524290, 2, 0, 524291, 2, 0, 524292, 2, 0, 524293, 2, 0, 524294, 2, 0, 524295, 2, 0, 524296, 2, 0, 524297, 2, 0, 524298, 2, 0, 524299, 2, 0, 524300, 3, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524313, 0, 0, 524319, 0, 0, 655355, 0, 0, 655356, 0, 0, 655357, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589855, 0, 0, 720891, 0, 0, 720892, 0, 0, 720893, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 655391, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 635.112, 391.561 )
+position = Vector2( 0, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -49,3 +51,45 @@ smoothing_enabled = true
 drag_margin_left = 0.3
 drag_margin_right = 0.3
 editor_draw_limits = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Purple Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1280, 960 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Purple Sky"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Back Blocks" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.690196, 0.231373, 0.741176, 0.262745 )
+position = Vector2( 0, -1000 )
+motion_scale = Vector2( 0.25, 0.25 )
+motion_mirroring = Vector2( 2560, 1920 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Back Blocks"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Middle Blocks" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.560784, 0.764706, 0.733333, 0.478431 )
+position = Vector2( 0, -500 )
+motion_scale = Vector2( 0.4, 0.4 )
+motion_mirroring = Vector2( 1600, 1200 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Middle Blocks"]
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Nearby Blocks" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.486275, 0.270588, 0.270588, 0.12549 )
+motion_scale = Vector2( 0.7, 0.7 )
+motion_mirroring = Vector2( 1120, 840 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Nearby Blocks"]
+scale = Vector2( 1.75, 1.75 )
+texture = ExtResource( 5 )
+centered = false
