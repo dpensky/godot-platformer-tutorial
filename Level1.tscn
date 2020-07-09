@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/world_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,9 @@ extents = Vector2( 160, 32 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 224, 32 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 1125.78, 26.111 )
 
 [node name="Level1" type="Node2D"]
 
@@ -93,3 +96,13 @@ motion_mirroring = Vector2( 1120, 840 )
 scale = Vector2( 1.75, 1.75 )
 texture = ExtResource( 5 )
 centered = false
+
+[node name="Fall Zone" type="Area2D" parent="."]
+position = Vector2( 919.085, 746.636 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fall Zone"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="Fall Zone" to="Player" method="_on_Fall_Zone_body_entered"]
