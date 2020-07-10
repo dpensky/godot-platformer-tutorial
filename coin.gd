@@ -6,4 +6,10 @@ func _ready():
 
 
 func _on_coin_body_entered(body):
+	$CollisionShape2D.disabled = true  # dont colide twice
+	$AnimationPlayer.play("bounce")
+	body.add_coin()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
 	queue_free()
