@@ -1,14 +1,17 @@
 extends Area2D
 
+signal coin_collected
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
 func _on_coin_body_entered(body):
-	$CollisionShape2D.disabled = true  # dont colide twice
 	$AnimationPlayer.play("bounce")
-	body.add_coin()
+	$AudioStreamPlayer.play()
+	set_collision_mask_bit(0, false)
+	emit_signal('coin_collected')   # dont colide twice
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
