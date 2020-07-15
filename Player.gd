@@ -34,7 +34,10 @@ func _physics_process(_delta):
 
 
 func _on_Fall_Zone_body_entered(body):
-	$AudioStreamPlayer.play()
-	yield($AudioStreamPlayer, 'finished')
-	get_tree().change_scene("res://Level1.tscn")
-
+	# print_debug(body.name)
+	if body.name == 'Player':
+		$AudioStreamPlayer.play()
+		yield($AudioStreamPlayer, 'finished')
+		get_tree().change_scene("res://Level1.tscn")
+	else:
+		body.queue_free()
