@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+var lifes = 3
 var coins = 0
 var velocity = Vector2(0,0)
 
@@ -36,8 +37,40 @@ func _physics_process(_delta):
 func _on_Fall_Zone_body_entered(body):
 	# print_debug(body.name)
 	if body.name == 'Player':
-		$AudioStreamPlayer.play()
-		yield($AudioStreamPlayer, 'finished')
-		get_tree().change_scene("res://Level1.tscn")
+		die()
 	else:
 		body.queue_free()
+
+
+func die():
+	$AudioStreamPlayer.play()
+	yield($AudioStreamPlayer, 'finished')
+	get_tree().change_scene("res://Level1.tscn")
+
+
+func take_damage(var enemy_x_position):
+	var PUSHFORCE = 800
+	lifes -= 1
+	set_modulate(Color(1,0.3,0.3,0.3))
+	velocity.y = JUMPFORCE * 0.5
+	if enemy_x_position > position.x:
+		velocity.x = -PUSHFORCE
+	elif enemy_x_position < position.x:
+		velocity.x = PUSHFORCE
+	else:
+		print("how?")
+	Input.action_release("left")
+	Input.action_release("right")
+	$Timer.start()
+
+
+func bounce():
+	velocity.y = JUMPFORCE * 0.7
+
+
+func _on_Timer_timeout():
+	# print(lifes)
+	if lifes == 0:
+		die()
+	else:
+		set_modulate(Color(1,1,1,1))
