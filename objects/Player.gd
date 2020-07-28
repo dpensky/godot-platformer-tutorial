@@ -8,23 +8,31 @@ const SPEED = 180
 const GRAVITY = 35
 const JUMPFORCE = -1100
 
+export (NodePath) var joystickLeftPath
+onready var joystickLeft : Joystick = get_node(joystickLeftPath)
+
 func _physics_process(_delta):
 	# $AnimatedSprite.animation = "idle"
 	
 	if Input.is_action_pressed("right"):
 		velocity.x = SPEED
-		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play("walk")
 	elif Input.is_action_pressed("left"):
 		velocity.x = -SPEED
-		$AnimatedSprite.flip_h = true
-		$AnimatedSprite.play("walk")
+	elif joystickLeft and joystickLeft.is_working:
+		velocity.x = joystickLeft.output.x * SPEED
 	else:
 		$AnimatedSprite.play("idle")
 	
+	if velocity.x > 0:
+		$AnimatedSprite.flip_h = false
+		$AnimatedSprite.play("walk")
+	elif velocity.x < 0:
+		$AnimatedSprite.flip_h = true
+		$AnimatedSprite.play("walk")
+	
 	if not is_on_floor():
 		$AnimatedSprite.play("air")
-		
+
 	velocity.y += GRAVITY
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():

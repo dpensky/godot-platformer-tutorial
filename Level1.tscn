@@ -1,17 +1,21 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/world_tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://pass_trough_tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://assets/background/set2_background.png" type="Texture" id=4]
 [ext_resource path="res://assets/background/set2_tiles.png" type="Texture" id=5]
-[ext_resource path="res://coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/Coin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/HUD/coin_gold.png" type="Texture" id=8]
 [ext_resource path="res://HUD.gd" type="Script" id=9]
 [ext_resource path="res://assets/background/background.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/background/win.wav" type="AudioStream" id=11]
-[ext_resource path="res://Enemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/Enemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Level1.gd" type="Script" id=14]
+[ext_resource path="res://Joystick/joystick_handle.png" type="Texture" id=15]
+[ext_resource path="res://Joystick/joystick_circle.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 160, 32 )
@@ -42,6 +46,7 @@ size = 100
 font_data = ExtResource( 7 )
 
 [node name="Level1" type="Node2D"]
+script = ExtResource( 14 )
 
 [node name="Tiles One-Way" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -225,6 +230,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Joystick" parent="HUD" instance=ExtResource( 13 )]
+modulate = Color( 1, 1, 1, 0.537255 )
+margin_top = -195.0
+margin_right = 150.0
+rect_scale = Vector2( 0.5, 0.5 )
+directions = 4
+visibility_mode = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 931.718, 500.565 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 16 )
+pressed = ExtResource( 15 )
+visibility_mode = 1
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -24.0
@@ -249,6 +270,7 @@ position = Vector2( 1443.55, 412.831 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -176.554, 208.617 )
 collision_mask = 30
+joystickLeftPath = NodePath("../HUD/Joystick")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -273,3 +295,4 @@ editor_draw_limits = true
 [connection signal="coin_collected" from="Coins/coin8" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin9" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin10" to="HUD" method="_on_coin_collected"]
+[connection signal="pressed" from="HUD/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
